@@ -1,0 +1,11 @@
+from django.contrib.gis import admin
+from .models import Place
+
+class PlaceAdmin(admin.OSMGeoAdmin):
+    list_display = ('name', 'coord', 'active', 'address')
+    list_display_links = ('name',)
+    list_editable = ('active',)
+    search_fields = ('name',)
+    save_on_top = True
+    list_filter = ('active',)    
+admin.site.register(Place, PlaceAdmin)
